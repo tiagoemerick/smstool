@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- MainTabs -->
+    <string name="app_name">SMS Tool</string>
+    <string name="tab1_name">Enviar SMS</string>
+    <string name="tab2_name">Redirecionar SMS</string>
+    
+    <!-- Tab1 -->
+    <string name="how_it_works">Separe os números com virgulas</string>
+    <string name="hint_number">Telefone</string>
+    <string name="hint_message">Mensagem</string>
+    <string name="button_name">Enviar</string>
+    <string name="select_number">Selecione um número</string>
+    
+    <!-- Tab2 -->
+    <string name="select_filter_type">Crie um filtro por</string>
+    <string name="filter_by_number">Número</string>
+    <string name="filter_by_message">Padrão de mensagem</string>
+    <string name="how_it_works_or_blank">Separe os números com virgulas ou deixe em branco para redirecionar de qualquer número</string>
+    <string name="button_redirect_name">Salvar</string>
+    <string name="button_clear_name">Deletar filtro</string>
+    <string name="hint_redirect_to">Redirecionar mensagem para</string>
+    <string name="hint_redirect_from">Redirecionar mensagens de</string>
+    <string name="hint_message_pattern">Padrão de palavras</string>
+    <string name="checkbox_save_outbox">Salvar SMS na caixa de saída</string>
+    <string name="redirect_note">Note que toda vez que você clicar em Salvar, você irá substitituir a configuração antiga</string>
+    <string name="fill_required_destination_fields">Por favor, preencha pelo menos o número de destino</string>
+    <string name="fill_required_blank_fields">Por favor, preencha todos os campos em branco</string>
+    <string name="message_pattern_filter_sms">Digite um padrão de palavras para filtrar SMS. Separe cada palavra com virgula</string>
+    <string name="confirm_delete_filter_alert">Deseja mesmo apagar o filtro criado?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="message_delete_success">Filtro apagado com sucesso!</string>
+    <string name="message_delete_not_success">Filtro já apagado.</string>
+    <string name="message_pattern_saved">Filtro criado.</string>
+    
+	<!-- All -->    
+    <string name="sms_send">SMS enviada</string>
+    <string name="sms_not_send">Falha ao enviar SMS</string>
+    <string name="sms_sent">SMS entregue</string>
+    <string name="sms_not_sent">SMS não foi entregue</string>
+    <string name="fill_all_blank_fields"> Por favor, informe todos os campos</string>
+    
+    <!-- phone types -->
+    <string name="type_phone_home">Casa</string>
+    <string name="type_phone_mobile">Celular</string>
+    <string name="type_phone_work">Trabalho</string>
+    <string name="type_phone_mobile_work">Celular trabalho</string>
+    
+    <!-- Notification -->
+    <string name="message_error_notification">Ocorreu um erro ao tentar enviar SMS</string>
+    <string name="message_success_notification">SMS enviado com sucesso</string>
+
+</resources>

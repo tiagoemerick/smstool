@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginTop="10dp"
+    android:fillViewport="true" >
+
+    <RelativeLayout
+        android:id="@+id/relLay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textViewFilterType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="100dp"
+            android:padding="1dip"
+            android:text="@string/select_filter_type" />
+
+        <RadioGroup
+            android:id="@+id/radioFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewFilterType"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:text="@string/checkbox_save_outbox" >
+<!--             android:animateLayoutChanges="true" > -->
+
+            <RadioButton
+                android:id="@+id/radioNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/filter_by_number" />
+
+            <RadioButton
+                android:id="@+id/radioMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filter_by_message" />
+        </RadioGroup>
+
+        <RelativeLayout
+            android:id="@+id/filterNumberFields"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioFilter"
+            android:layout_marginTop="10dp"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/textHowWorksNumberFields"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/how_it_works_or_blank" />
+
+            <EditText
+                android:id="@+id/textFromNumberFields"
+                android:layout_width="255dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textHowWorksNumberFields"
+                android:hint="@string/hint_redirect_from"
+                android:inputType="phone" />
+
+            <Button
+                android:id="@+id/pickContactFromNumberFields"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textFromNumberFields"
+                android:layout_alignBottom="@+id/textFromNumberFields"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/contacts" />
+
+            <EditText
+                android:id="@+id/textToNumberFields"
+                android:layout_width="255dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textFromNumberFields"
+                android:hint="@string/hint_redirect_to"
+                android:inputType="phone" />
+
+            <Button
+                android:id="@+id/pickContactToNumberFields"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textToNumberFields"
+                android:layout_alignBottom="@+id/textToNumberFields"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/contacts" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/filterMsgFields"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioFilter"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/textViewMessage"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:padding="1dip"
+                android:text="@string/message_pattern_filter_sms" />
+
+            <EditText
+                android:id="@+id/textPatternMsgFields"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textViewMessage"
+                android:hint="@string/hint_message_pattern"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/textToMsgFields"
+                android:layout_width="255dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textPatternMsgFields"
+                android:hint="@string/hint_redirect_to"
+                android:inputType="phone" />
+
+            <Button
+                android:id="@+id/pickContactToMsgFields"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textToMsgFields"
+                android:layout_alignBottom="@+id/textToMsgFields"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/contacts" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/commonFields"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/filterNumberFields" >
+
+            <CheckBox
+                android:id="@+id/checkSaveOutbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/commonFields"
+                android:text="@string/checkbox_save_outbox" />
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/commonFields"
+                android:layout_centerHorizontal="false"
+                android:layout_marginTop="45dp"
+                android:layout_marginLeft="35dp"
+                android:text="@string/button_redirect_name" />
+            
+            <Button
+                android:id="@+id/clearButton"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/commonFields"
+                android:layout_centerHorizontal="false"
+                android:layout_marginTop="45dp"
+                android:layout_marginLeft="160dp"
+                android:text="@string/button_clear_name" />
+
+            <TextView
+                android:id="@+id/textRedirectNoteNumberFields"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/saveButton"
+                android:layout_marginTop="10dp"
+                android:text="@string/redirect_note" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

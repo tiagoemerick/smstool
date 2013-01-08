@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- MainTabs -->
+    <string name="app_name">SMS Tool</string>
+    <string name="tab1_name">Send SMS</string>
+    <string name="tab2_name">Redirect SMS</string>
+    
+    <!-- Tab1 -->
+    <string name="how_it_works">Separate numbers with commas</string>
+    <string name="hint_number">Phone</string>
+    <string name="hint_message">Message</string>
+    <string name="button_name">Send</string>
+    <string name="select_number">Select a number</string>
+    
+    <!-- Tab2 -->
+    <string name="select_filter_type">Create a filter by</string>
+    <string name="filter_by_number">Number</string>
+    <string name="filter_by_message">Message pattern</string>
+    <string name="how_it_works_or_blank">Separate numbers with commas or let it blank to redirect from everyone</string>
+    <string name="button_redirect_name">Save</string>
+    <string name="button_clear_name">Delete filter</string>
+    <string name="hint_redirect_to">Redirect message to</string>
+    <string name="hint_redirect_from">Redirect messages from</string>
+    <string name="hint_message_pattern">Word pattern</string>
+    <string name="checkbox_save_outbox">Save SMS in outbox</string>
+    <string name="redirect_note">Note that each time you click Save button, you replace previous configuration</string>
+    <string name="fill_required_destination_fields">Please, fill at least the destination number</string>
+    <string name="fill_required_blank_fields">Please, fill all the blank fields</string>
+    <string name="message_pattern_filter_sms">Type word pattern to filter SMS. Separate each one with commas</string>
+    <string name="confirm_delete_filter_alert">Do you really want to delete the created filter?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="message_delete_success">Filter deleted!</string>
+    <string name="message_delete_not_success">Filter has been deleted.</string>
+    <string name="message_pattern_saved">Filter created.</string>
+    
+    <!-- All --> 
+    <string name="sms_send">SMS sent</string>
+    <string name="sms_not_send">Fail in send SMS</string>
+    <string name="sms_sent">SMS was delivered</string>
+    <string name="sms_not_sent">SMS was not delivered</string>
+    <string name="fill_all_blank_fields">Please, fill all blank fields</string>
+
+    <!-- phone types -->
+    <string name="type_phone_home">Home</string>
+    <string name="type_phone_mobile">Mobile</string>
+    <string name="type_phone_work">Work</string>
+    <string name="type_phone_mobile_work">Mobile work</string>
+
+    <!-- Notification -->
+    <string name="message_error_notification">An error occurred while trying to send SMS</string>
+    <string name="message_success_notification">SMS successfully sent</string>
+    
+</resources>

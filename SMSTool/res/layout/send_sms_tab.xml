@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginTop="10dp"
+    android:fillViewport="true" >
+
+    <RelativeLayout
+        android:id="@+id/relLay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/how_it_works" />
+
+        <EditText
+            android:id="@+id/text"
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/textView1"
+            android:hint="@string/hint_number"
+            android:inputType="phone" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/pickContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/text"
+            android:layout_alignBottom="@+id/text"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/contacts" />
+
+        <EditText
+            android:id="@+id/textTouch"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/text"
+            android:layout_marginTop="20dp"
+            android:hint="@string/hint_message"
+            android:inputType="textMultiLine" />
+
+        <CheckBox
+            android:id="@+id/checkSaveOutbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/textTouch"
+            android:text="@string/checkbox_save_outbox" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textTouch"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:text="@string/button_name" />
+    </RelativeLayout>
+
+</ScrollView>
