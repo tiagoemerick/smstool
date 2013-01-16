@@ -18,48 +18,50 @@ public class SMSReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		Bundle bundle = intent.getExtras();
-		SmsMessage[] msgs = null;
-		StringBuilder originalMessage = new StringBuilder();
-		String originalPhone = null;
-
-		if (bundle != null) {
-			Object[] pdus = (Object[]) bundle.get("pdus");
-			msgs = new SmsMessage[pdus.length];
-			for (int i = 0; i < msgs.length; i++) {
-				msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
-				if (i == 0) {
-					originalPhone = msgs[i].getOriginatingAddress();
+		if (intent != null) {
+			Bundle bundle = intent.getExtras();
+			SmsMessage[] msgs = null;
+			StringBuilder originalMessage = new StringBuilder();
+			String originalPhone = null;
+			
+			if (bundle != null) {
+				Object[] pdus = (Object[]) bundle.get("pdus");
+				msgs = new SmsMessage[pdus.length];
+				for (int i = 0; i < msgs.length; i++) {
+					msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
+					if (i == 0) {
+						originalPhone = msgs[i].getOriginatingAddress();
+					}
+					originalMessage.append(msgs[i].getMessageBody().toString());
+					if (i != (msgs.length - 1)) {
+						originalMessage.append("\n");
+					}
 				}
-				originalMessage.append(msgs[i].getMessageBody().toString());
-				if (i != (msgs.length - 1)) {
-					originalMessage.append("\n");
+				
+				final String FILENAME = "redirect_file";
+				
+				int ch;
+				FileInputStream fis = null;
+				StringBuilder strContent = new StringBuilder();
+				
+				try {
+					fis = context.openFileInput(FILENAME);
+					while ((ch = fis.read()) != -1) {
+						strContent.append((char) ch);
+					}
+					fis.close();
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
-			}
-
-			final String FILENAME = "redirect_file";
-
-			int ch;
-			FileInputStream fis = null;
-			StringBuilder strContent = new StringBuilder();
-
-			try {
-				fis = context.openFileInput(FILENAME);
-				while ((ch = fis.read()) != -1) {
-					strContent.append((char) ch);
-				}
-				fis.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			if (!TextUtils.isEmpty(strContent)) {
-				if (isRedirectNumberType(strContent)) {
-					sendSMSByNumberType(context, originalMessage, originalPhone, strContent);
-				} else {
-					sendSMSByMsgType(context, originalMessage, strContent);
+				
+				if (!TextUtils.isEmpty(strContent)) {
+					if (isRedirectNumberType(strContent)) {
+						sendSMSByNumberType(context, originalMessage, originalPhone, strContent);
+					} else {
+						sendSMSByMsgType(context, originalMessage, strContent);
+					}
 				}
 			}
 		}

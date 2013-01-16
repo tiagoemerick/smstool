@@ -43,18 +43,20 @@ public class SMSManagerService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		Bundle intentExtras = intent.getExtras();
-		if (intentExtras != null) {
-			String phoneNumber = intentExtras.getString("celNumber");
-			String message = intentExtras.getString("textMessage");
-
-			if (isContentValid(phoneNumber, message)) {
-				sendNotification = intentExtras.getBoolean("addNotification");
-				saveOutbox = intentExtras.getBoolean("saveOutbox");
-
-				sendSMS(phoneNumber, message);
-			} else {
-				Toast.makeText(getBaseContext(), R.string.fill_all_blank_fields, Toast.LENGTH_SHORT).show();
+		if (intent != null) {
+			Bundle intentExtras = intent.getExtras();
+			if (intentExtras != null) {
+				String phoneNumber = intentExtras.getString("celNumber");
+				String message = intentExtras.getString("textMessage");
+				
+				if (isContentValid(phoneNumber, message)) {
+					sendNotification = intentExtras.getBoolean("addNotification");
+					saveOutbox = intentExtras.getBoolean("saveOutbox");
+					
+					sendSMS(phoneNumber, message);
+				} else {
+					Toast.makeText(getBaseContext(), R.string.fill_all_blank_fields, Toast.LENGTH_SHORT).show();
+				}
 			}
 		}
 
