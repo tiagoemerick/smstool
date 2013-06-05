@@ -9,7 +9,7 @@
     <!-- Tab1 -->
     <string name="how_it_works">Separe os números com virgulas</string>
     <string name="hint_number">Telefone</string>
-    <string name="hint_message">Mensagem</string>
+    <string name="hint_message">Mensagem sem limite de caracteres</string>
     <string name="button_name">Enviar</string>
     
     <!-- Tab2 -->

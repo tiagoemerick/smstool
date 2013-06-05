@@ -9,7 +9,7 @@
     <!-- Tab1 -->
     <string name="how_it_works">Separate numbers with commas</string>
     <string name="hint_number">Phone</string>
-    <string name="hint_message">Message</string>
+    <string name="hint_message">Message without characters limit</string>
     <string name="button_name">Send</string>
     
     <!-- Tab2 -->
