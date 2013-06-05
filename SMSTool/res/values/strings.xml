@@ -41,6 +41,7 @@
     <string name="sms_sent">SMS was delivered</string>
     <string name="sms_not_sent">SMS was not delivered</string>
     <string name="fill_all_blank_fields">Please, fill all blank fields</string>
+    <string name="rate_it">Like it? Rate it clicking on star. Thx! :)</string>
 
     <!-- phone types -->
     <string name="type_phone_home">Home</string>

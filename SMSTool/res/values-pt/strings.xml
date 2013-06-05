@@ -41,6 +41,7 @@
     <string name="sms_sent">SMS entregue</string>
     <string name="sms_not_sent">SMS não foi entregue</string>
     <string name="fill_all_blank_fields"> Por favor, informe todos os campos</string>
+    <string name="rate_it">Gostou? Avalie clicando na estrela. Obrigado! :)</string>
     
     <!-- phone types -->
     <string name="type_phone_home">Casa</string>
