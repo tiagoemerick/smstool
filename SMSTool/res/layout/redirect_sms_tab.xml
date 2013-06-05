@@ -76,7 +76,7 @@
                 android:layout_alignBottom="@+id/textFromNumberFields"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="6dp"
-                android:background="@drawable/contacts" />
+                android:background="@drawable/ic_contacts" />
 
             <EditText
                 android:id="@+id/textToNumberFields"
@@ -95,7 +95,7 @@
                 android:layout_alignBottom="@+id/textToNumberFields"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="6dp"
-                android:background="@drawable/contacts" />
+                android:background="@drawable/ic_contacts" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -140,7 +140,7 @@
                 android:layout_alignBottom="@+id/textToMsgFields"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="6dp"
-                android:background="@drawable/contacts" />
+                android:background="@drawable/ic_contacts" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -157,13 +157,20 @@
                 android:layout_below="@+id/commonFields"
                 android:text="@string/checkbox_save_outbox" />
 
+            <CheckBox
+                android:id="@+id/checkDisplayNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/checkSaveOutbox"
+                android:text="@string/checkbox_display_notification" />
+
             <Button
                 android:id="@+id/saveButton"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/commonFields"
+                android:layout_below="@+id/checkDisplayNotification"
                 android:layout_centerHorizontal="false"
-                android:layout_marginTop="45dp"
                 android:layout_marginLeft="35dp"
                 android:text="@string/button_redirect_name" />
             
@@ -171,9 +178,8 @@
                 android:id="@+id/clearButton"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/commonFields"
+                android:layout_below="@+id/checkDisplayNotification"
                 android:layout_centerHorizontal="false"
-                android:layout_marginTop="45dp"
                 android:layout_marginLeft="160dp"
                 android:text="@string/button_clear_name" />
 

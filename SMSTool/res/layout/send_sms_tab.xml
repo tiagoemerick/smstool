@@ -36,7 +36,7 @@
             android:layout_alignBottom="@+id/text"
             android:layout_alignParentRight="true"
             android:layout_marginRight="6dp"
-            android:background="@drawable/contacts" />
+            android:background="@drawable/ic_contacts" />
 
         <EditText
             android:id="@+id/textTouch"

@@ -11,7 +11,6 @@
     <string name="hint_number">Phone</string>
     <string name="hint_message">Message</string>
     <string name="button_name">Send</string>
-    <string name="select_number">Select a number</string>
     
     <!-- Tab2 -->
     <string name="select_filter_type">Create a filter by</string>
@@ -24,6 +23,7 @@
     <string name="hint_redirect_from">Redirect messages from</string>
     <string name="hint_message_pattern">Word pattern</string>
     <string name="checkbox_save_outbox">Save SMS in outbox</string>
+    <string name="checkbox_display_notification">Display redirect notification</string>
     <string name="redirect_note">Note that each time you click Save button, you replace previous configuration</string>
     <string name="fill_required_destination_fields">Please, fill at least the destination number</string>
     <string name="fill_required_blank_fields">Please, fill all the blank fields</string>

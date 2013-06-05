@@ -3,6 +3,7 @@ package com.viisi.droid.smstool.reciever;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Locale;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -69,15 +70,16 @@ public class SMSReceiver extends BroadcastReceiver {
 
 	private void sendSMSByMsgType(Context context, StringBuilder originalMessage, StringBuilder strContent) {
 		String[] contentFileSplited = strContent.toString().split(";");
-		String originalMessageFormated = originalMessage.toString().toLowerCase().replace(" ", "#");
+		String originalMessageFormated = originalMessage.toString().toLowerCase(Locale.US).replace(" ", "#");
 
 		messageFor: for (String wordFromMessage : originalMessageFormated.split("#")) {
-			for (String wordFromPattern : contentFileSplited[0].toLowerCase().trim().split(",")) {
+			for (String wordFromPattern : contentFileSplited[0].toLowerCase(Locale.US).trim().split(",")) {
 				if (wordFromMessage.contentEquals(wordFromPattern)) {
 
-					Boolean saveOutbox = new Boolean(contentFileSplited[2]);
+					Boolean saveOutbox = Boolean.valueOf(contentFileSplited[2]);
+					Boolean displayNotyification = Boolean.valueOf(contentFileSplited[3]);
 					String numbersTo = contentFileSplited[1];
-					sendSMS(numbersTo, originalMessage.toString(), context, saveOutbox);
+					sendSMS(numbersTo, originalMessage.toString(), context, saveOutbox, displayNotyification);
 
 					break messageFor;
 				}
@@ -90,11 +92,12 @@ public class SMSReceiver extends BroadcastReceiver {
 		if (phoneFromAndTo != null && !TextUtils.isEmpty(originalPhone)) {
 			String phoneFrom = phoneFromAndTo[0];
 
-			Boolean saveOutbox = new Boolean(phoneFromAndTo[2]);
+			Boolean saveOutbox = Boolean.valueOf(phoneFromAndTo[2]);
+			Boolean displayNotyification = Boolean.valueOf(phoneFromAndTo[3]);
 			final String ALL_NUMBERS_SIMBOL = "*";
 
 			if (phoneFrom.contains(ALL_NUMBERS_SIMBOL)) {
-				sendSMS(phoneFromAndTo[1], originalMessage.toString(), context, saveOutbox);
+				sendSMS(phoneFromAndTo[1], originalMessage.toString(), context, saveOutbox, displayNotyification);
 			} else {
 				originalPhone = formartOriginalPhone(originalPhone);
 				String[] phonesFrom = phoneFrom.split(",");
@@ -103,7 +106,7 @@ public class SMSReceiver extends BroadcastReceiver {
 					numberFrom = formartOriginalPhone(numberFrom);
 
 					if (numberFrom.compareTo(originalPhone) == 0) {
-						sendSMS(phoneFromAndTo[1], originalMessage.toString(), context, saveOutbox);
+						sendSMS(phoneFromAndTo[1], originalMessage.toString(), context, saveOutbox, displayNotyification);
 						break;
 					}
 				}
@@ -126,7 +129,7 @@ public class SMSReceiver extends BroadcastReceiver {
 		return originalPhone;
 	}
 
-	private void sendSMS(String phoneNumber, String message, Context context, Boolean saveOutbox) {
+	private void sendSMS(String phoneNumber, String message, Context context, Boolean saveOutbox, Boolean displayNotyification) {
 		ContextWrapper cw = new ContextWrapper(context);
 		Context baseContext = cw.getBaseContext();
 
@@ -134,7 +137,7 @@ public class SMSReceiver extends BroadcastReceiver {
 
 		intentSMS.putExtra("celNumber", phoneNumber);
 		intentSMS.putExtra("textMessage", message);
-		intentSMS.putExtra("addNotification", Boolean.TRUE);
+		intentSMS.putExtra("addNotification", displayNotyification);
 		intentSMS.putExtra("saveOutbox", saveOutbox);
 
 		cw.startService(intentSMS);

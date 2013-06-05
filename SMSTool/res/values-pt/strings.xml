@@ -11,7 +11,6 @@
     <string name="hint_number">Telefone</string>
     <string name="hint_message">Mensagem</string>
     <string name="button_name">Enviar</string>
-    <string name="select_number">Selecione um número</string>
     
     <!-- Tab2 -->
     <string name="select_filter_type">Crie um filtro por</string>
@@ -24,6 +23,7 @@
     <string name="hint_redirect_from">Redirecionar mensagens de</string>
     <string name="hint_message_pattern">Padrão de palavras</string>
     <string name="checkbox_save_outbox">Salvar SMS na caixa de saída</string>
+    <string name="checkbox_display_notification">Mostrar notificação de redirecionamento</string>
     <string name="redirect_note">Note que toda vez que você clicar em Salvar, você irá substitituir a configuração antiga</string>
     <string name="fill_required_destination_fields">Por favor, preencha pelo menos o número de destino</string>
     <string name="fill_required_blank_fields">Por favor, preencha todos os campos em branco</string>

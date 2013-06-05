@@ -48,7 +48,7 @@ public class MessageNotificationService extends Service {
 				
 				// PendingIntent to launch activity if the user selects
 				// the notification
-				Notification notif = new Notification(R.drawable.ic_tab2_grey, tickerTextString, System.currentTimeMillis());
+				Notification notif = new Notification(R.drawable.ic_notification, tickerTextString, System.currentTimeMillis());
 				notif.flags = Notification.FLAG_AUTO_CANCEL;
 				
 				notif.setLatestEventInfo(this, tickerTextString, message.toString(), detailsIntent);

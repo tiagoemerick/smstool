@@ -54,6 +54,7 @@ public class RedirectSMSTabActivity extends Activity {
 	private Button saveButton;
 	private Button clearButton;
 	private CheckBox checkSaveOutbox;
+	private CheckBox checkDisplayNotification;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -250,6 +251,8 @@ public class RedirectSMSTabActivity extends Activity {
 				dados.append(";");
 				dados.append(checkSaveOutbox.isChecked());
 				dados.append(";");
+				dados.append(checkDisplayNotification.isChecked());
+				dados.append(";");
 				dados.append("number_pattern");
 			} else {
 				dados.append(numberFromOrMessagePattern);
@@ -257,6 +260,8 @@ public class RedirectSMSTabActivity extends Activity {
 				dados.append(numberTo);
 				dados.append(";");
 				dados.append(checkSaveOutbox.isChecked());
+				dados.append(";");
+				dados.append(checkDisplayNotification.isChecked());
 				dados.append(";");
 				dados.append("message_pattern");
 			}
@@ -373,6 +378,8 @@ public class RedirectSMSTabActivity extends Activity {
 		// CommonField
 		checkSaveOutbox = (CheckBox) this.findViewById(R.id.checkSaveOutbox);
 		checkSaveOutbox.setChecked(Boolean.TRUE);
+		checkDisplayNotification = (CheckBox) this.findViewById(R.id.checkDisplayNotification);
+		checkDisplayNotification.setChecked(Boolean.TRUE);
 	}
 
 	private void createComponentsListeners() {
