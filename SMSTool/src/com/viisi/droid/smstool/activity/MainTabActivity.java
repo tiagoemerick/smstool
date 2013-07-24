@@ -46,7 +46,6 @@ public class MainTabActivity extends TabActivity {
 	}
 	
 	private OnClickListener rateListener = new OnClickListener() {
-		@Override
 		public void onClick(View arg0) {
 			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME));
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
