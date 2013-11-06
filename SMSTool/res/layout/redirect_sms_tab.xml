@@ -154,7 +154,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/commonFields"
                 android:text="@string/checkbox_save_outbox" />
 
             <CheckBox
