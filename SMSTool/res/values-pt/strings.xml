@@ -11,6 +11,8 @@
     <string name="hint_number">Telefone</string>
     <string name="hint_message">Mensagem sem limite de caracteres</string>
     <string name="button_name">Enviar</string>
+    <string name="button_clear">Limpar</string>
+    <string name="toast_cleared">Limpado!</string>
     
     <!-- Tab2 -->
     <string name="select_filter_type">Crie um filtro por</string>

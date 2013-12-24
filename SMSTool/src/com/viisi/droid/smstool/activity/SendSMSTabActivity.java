@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
@@ -17,12 +18,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.viisi.droid.smstool.R;
 import com.viisi.droid.smstool.entity.Contact;
 import com.viisi.droid.smstool.service.SMSManagerService;
 
 public class SendSMSTabActivity extends Activity {
+
+	private final static String APP_PNAME = "com.viisi.droid.smstool";
+	private Button rate;
 
 	private static final int PICK_CONTACT = 1;
 
@@ -31,6 +36,7 @@ public class SendSMSTabActivity extends Activity {
 	private EditText number;
 	private EditText message;
 	private Button sendButton;
+	private Button clearButton;
 	private Button pickContact;
 	private CheckBox checkSaveOutbox;
 
@@ -96,30 +102,39 @@ public class SendSMSTabActivity extends Activity {
 
 		private void sendSMS(String celNumber, String textMessage) {
 			Context baseContext = getApplicationContext();
-			
+
 			Random s = new Random(System.currentTimeMillis());
 			String START_SENDING = "START_SENDING_TOOL" + s.nextLong();
-			
+
 			Intent intentSMS = new Intent(START_SENDING, null, baseContext, SMSManagerService.class);
-			
+
 			intentSMS.putExtra("celNumber", celNumber);
 			intentSMS.putExtra("textMessage", textMessage);
 			intentSMS.putExtra("addNotification", Boolean.FALSE);
 			intentSMS.putExtra("saveOutbox", checkSaveOutbox.isChecked());
-			
+
 			PendingIntent pendingIntent = PendingIntent.getService(baseContext, 0, intentSMS, PendingIntent.FLAG_ONE_SHOT);
 			try {
 				pendingIntent.send();
 			} catch (CanceledException e) {
 			}
 
-//			startService(intentSMS);
+			// startService(intentSMS);
+		}
+	};
+
+	private OnClickListener clearListener = new OnClickListener() {
+		public void onClick(View v) {
+			number.setText("");
+			message.setText("");
+			Toast.makeText(getBaseContext(), R.string.toast_cleared, Toast.LENGTH_SHORT).show();
 		}
 	};
 
 	private void getContactInfo(Intent intent) {
 		contact = new Contact();
 
+		@SuppressWarnings("deprecation")
 		Cursor cursor = managedQuery(intent.getData(), null, null, null, null);
 		while (cursor.moveToNext()) {
 			String contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
@@ -178,14 +193,24 @@ public class SendSMSTabActivity extends Activity {
 				phones.close();
 			}
 		}
-		cursor.close();
+		// cursor.close();
 	}
+
+	private OnClickListener rateListener = new OnClickListener() {
+		public void onClick(View arg0) {
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME));
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			getApplicationContext().startActivity(intent);
+		}
+	};
 
 	private void createComponentsView() {
 		number = (EditText) findViewById(R.id.text);
 		message = (EditText) findViewById(R.id.textTouch);
 		sendButton = (Button) this.findViewById(R.id.button1);
+		clearButton = (Button) this.findViewById(R.id.button2);
 		pickContact = (Button) this.findViewById(R.id.pickContact);
+		rate = (Button) this.findViewById(R.id.rateButton);
 
 		checkSaveOutbox = (CheckBox) this.findViewById(R.id.checkSaveOutbox);
 		checkSaveOutbox.setChecked(Boolean.TRUE);
@@ -193,7 +218,9 @@ public class SendSMSTabActivity extends Activity {
 
 	private void createComponentsListeners() {
 		sendButton.setOnClickListener(okListener);
+		clearButton.setOnClickListener(clearListener);
 		pickContact.setOnClickListener(contactListener);
+		rate.setOnClickListener(rateListener);
 	}
 
 }

@@ -14,8 +14,8 @@
             android:id="@+id/textViewFilterType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="100dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
             android:padding="1dip"
             android:text="@string/select_filter_type" />
 
@@ -27,7 +27,8 @@
             android:layout_centerHorizontal="true"
             android:orientation="horizontal"
             android:text="@string/checkbox_save_outbox" >
-<!--             android:animateLayoutChanges="true" > -->
+
+            <!-- android:animateLayoutChanges="true" > -->
 
             <RadioButton
                 android:id="@+id/radioNumber"
@@ -61,40 +62,40 @@
 
             <EditText
                 android:id="@+id/textFromNumberFields"
-                android:layout_width="255dp"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textHowWorksNumberFields"
+                android:layout_toLeftOf="@+id/pickContactFromNumberFields"
                 android:hint="@string/hint_redirect_from"
                 android:inputType="phone" />
 
             <Button
                 android:id="@+id/pickContactFromNumberFields"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
                 android:layout_alignBaseline="@+id/textFromNumberFields"
                 android:layout_alignBottom="@+id/textFromNumberFields"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="6dp"
                 android:background="@drawable/ic_contacts" />
 
             <EditText
                 android:id="@+id/textToNumberFields"
-                android:layout_width="255dp"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textFromNumberFields"
+                android:layout_toLeftOf="@+id/pickContactToNumberFields"
                 android:hint="@string/hint_redirect_to"
                 android:inputType="phone" />
 
             <Button
                 android:id="@+id/pickContactToNumberFields"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
                 android:layout_alignBaseline="@+id/textToNumberFields"
                 android:layout_alignBottom="@+id/textToNumberFields"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="6dp"
                 android:background="@drawable/ic_contacts" />
         </RelativeLayout>
 
@@ -108,7 +109,7 @@
 
             <TextView
                 android:id="@+id/textViewMessage"
-                android:layout_width="270dp"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:padding="1dip"
@@ -125,21 +126,21 @@
 
             <EditText
                 android:id="@+id/textToMsgFields"
-                android:layout_width="255dp"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textPatternMsgFields"
+                android:layout_toLeftOf="@+id/pickContactToMsgFields"
                 android:hint="@string/hint_redirect_to"
                 android:inputType="phone" />
 
             <Button
                 android:id="@+id/pickContactToMsgFields"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
                 android:layout_alignBaseline="@+id/textToMsgFields"
                 android:layout_alignBottom="@+id/textToMsgFields"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="6dp"
                 android:background="@drawable/ic_contacts" />
         </RelativeLayout>
 
@@ -164,33 +165,63 @@
                 android:layout_below="@+id/checkSaveOutbox"
                 android:text="@string/checkbox_display_notification" />
 
-            <Button
-                android:id="@+id/saveButton"
-                android:layout_width="120dp"
+            <LinearLayout
+                android:id="@+id/lineOne"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/checkDisplayNotification"
-                android:layout_centerHorizontal="false"
-                android:layout_marginLeft="35dp"
-                android:text="@string/button_redirect_name" />
-            
-            <Button
-                android:id="@+id/clearButton"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/checkDisplayNotification"
-                android:layout_centerHorizontal="false"
-                android:layout_marginLeft="160dp"
-                android:text="@string/button_clear_name" />
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/saveButton"
+                    style="@android:attr/buttonBarButtonStyle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_redirect_name" />
+
+                <Button
+                    android:id="@+id/clearButton"
+                    style="@android:attr/buttonBarButtonStyle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_clear_name" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textRedirectNoteNumberFields"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/saveButton"
-                android:layout_marginTop="10dp"
+                android:layout_below="@+id/lineOne"
                 android:text="@string/redirect_note" />
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/commonFields"
+            android:layout_marginTop="20dp"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/rateButton"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:background="@drawable/ic_rate"
+                android:gravity="bottom" />
+
+            <TextView
+                android:id="@+id/textTouchx"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="@string/rate_it" />
+        </LinearLayout>
     </RelativeLayout>
 
 </ScrollView>

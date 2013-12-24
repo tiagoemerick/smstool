@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
@@ -28,6 +29,9 @@ import com.viisi.droid.smstool.R;
 import com.viisi.droid.smstool.entity.Contact;
 
 public class RedirectSMSTabActivity extends Activity {
+
+	private final static String APP_PNAME = "com.viisi.droid.smstool";
+	private Button rate;
 
 	private static final int PICK_CONTACT = 1;
 
@@ -64,6 +68,14 @@ public class RedirectSMSTabActivity extends Activity {
 		createComponentsView();
 		createComponentsListeners();
 	}
+
+	private OnClickListener rateListener = new OnClickListener() {
+		public void onClick(View arg0) {
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME));
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			getApplicationContext().startActivity(intent);
+		}
+	};
 
 	private OnCheckedChangeListener radioFilterChangedListener = new OnCheckedChangeListener() {
 		public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -271,7 +283,7 @@ public class RedirectSMSTabActivity extends Activity {
 				fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
 				fos.write(dados.toString().getBytes());
 				fos.close();
-				
+
 				Toast.makeText(getBaseContext(), R.string.message_pattern_saved, Toast.LENGTH_SHORT).show();
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
@@ -284,6 +296,7 @@ public class RedirectSMSTabActivity extends Activity {
 	private void getContactInfo(Intent intent) {
 		contact = new Contact();
 
+		@SuppressWarnings("deprecation")
 		Cursor cursor = managedQuery(intent.getData(), null, null, null, null);
 		while (cursor.moveToNext()) {
 			String contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
@@ -342,9 +355,10 @@ public class RedirectSMSTabActivity extends Activity {
 				phones.close();
 			}
 		}
-//		cursor.close();
+		// cursor.close();
 	}
 
+	@SuppressWarnings("deprecation")
 	private void createComponentsView() {
 		p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -380,6 +394,7 @@ public class RedirectSMSTabActivity extends Activity {
 		checkSaveOutbox.setChecked(Boolean.TRUE);
 		checkDisplayNotification = (CheckBox) this.findViewById(R.id.checkDisplayNotification);
 		checkDisplayNotification.setChecked(Boolean.TRUE);
+		rate = (Button) this.findViewById(R.id.rateButton);
 	}
 
 	private void createComponentsListeners() {
@@ -389,6 +404,7 @@ public class RedirectSMSTabActivity extends Activity {
 		pickContactToMsgFields.setOnClickListener(contactToMsgTypeListener);
 		saveButton.setOnClickListener(saveRedirectMessages);
 		clearButton.setOnClickListener(clearPatterns);
+		rate.setOnClickListener(rateListener);
 	}
 
 }
